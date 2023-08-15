@@ -1,10 +1,17 @@
+import "./TodoItem.css"
 
-export const TodoItem = () => {
+export const TodoItem = ({ text , completed}) => {
     return (
-        <li>
-            <span> X </span>
-            <p>Mimido 😴</p>
-            <span> V </span>
+        <li className="TodoItem">
+            <span className={`Icon Icon-check ${completed && "Icon-check--active"}`}>
+                V
+            </span>
+            <p className={`TodoItem-p ${completed && "TodoItem-p--completed"}`}>
+                {text}
+            </p>
+            <span className={`Icon Icon-delete`}>
+                X
+            </span>
         </li>
     )
 }
