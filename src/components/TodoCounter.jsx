@@ -1,3 +1,4 @@
+import "./TodoCounter.css"
 export const TodoCounter = ({ done, total}) => {
   return (
     <h1 className="TodoCounter">

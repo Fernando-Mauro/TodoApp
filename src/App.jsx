@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 import { CreateTodoButton } from './components/CreateTodoButton';
 import { TodoCounter } from './components/TodoCounter';
@@ -22,27 +23,50 @@ const defaultTodos = [
 		text: "Dormir",
 		completed: true
 	},
+	{
+		text: "Funar",
+		completed: true
+	},
 
 ];
 
 export const App = () => {
-	return (
-		<div className="App">
-			<TodoCounter done={10} total={20} />
+	const [inputvalue, setInputValue] = useState("");
 
-			<TodoSearch />
+	const [todos, setTodos] = useState(defaultTodos);
+
+	const completed = todos.filter((todo) =>
+		!!todo.completed
+	).length;
+
+	const total = todos.length;
+
+	return (
+		<>
+			<TodoCounter
+				done={completed}
+				total={total}
+			/>
+
+			<TodoSearch
+				inputvalue={inputvalue}
+				setInputValue={setInputValue}
+			/>
 
 			<TodoList>
 				{
-					defaultTodos.map(({text, completed}, index) => {
-						return(
-							<TodoItem text={text} completed={completed} key={index}/>
-						)}
+					todos.map(({ text, completed }, index) => {
+						if (text.includes(inputvalue)) {
+							return (
+								<TodoItem text={text} completed={completed} key={index} />
+							)
+						}
+					}
 					)
 				}
 			</TodoList>
 
 			<CreateTodoButton />
-		</div>
+		</>
 	);
 }
