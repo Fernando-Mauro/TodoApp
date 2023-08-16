@@ -41,11 +41,11 @@ export const App = () => {
 
 	const total = todos.length;
 	const filteredTodos = todos.filter(({ text }) => {
-		const lowerCase = text.toLowerCase();
-		const inputLowerCase = inputvalue.toLowerCase()
-		return lowerCase.includes(inputLowerCase);
-	}
-	)
+			const lowerCase = text.toLowerCase();
+			const inputLowerCase = inputvalue.toLowerCase()
+			return lowerCase.includes(inputLowerCase);
+		}
+	);
 
 	const handleDeleteTodos = (text) => {
 		const newTodos = todos.filter(todo => {
@@ -56,11 +56,12 @@ export const App = () => {
 
 	const handleCompletedTodo = (text) => {
 		setTodos(todos.map(todo => {
-			if(todo.text === text) 
-			todo.completed = !todo.completed;
+			if (todo.text === text)
+				todo.completed = !todo.completed;
 			return todo;
 		}))
 	}
+
 	return (
 		<>
 			<TodoCounter
