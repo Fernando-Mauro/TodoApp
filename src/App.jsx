@@ -40,7 +40,27 @@ export const App = () => {
 	).length;
 
 	const total = todos.length;
+	const filteredTodos = todos.filter(({ text }) => {
+		const lowerCase = text.toLowerCase();
+		const inputLowerCase = inputvalue.toLowerCase()
+		return lowerCase.includes(inputLowerCase);
+	}
+	)
 
+	const handleDeleteTodos = (text) => {
+		const newTodos = todos.filter(todo => {
+			return todo.text !== text;
+		})
+		setTodos(newTodos);
+	}
+
+	const handleCompletedTodo = (text) => {
+		setTodos(todos.map(todo => {
+			if(todo.text === text) 
+			todo.completed = !todo.completed;
+			return todo;
+		}))
+	}
 	return (
 		<>
 			<TodoCounter
@@ -55,14 +75,9 @@ export const App = () => {
 
 			<TodoList>
 				{
-					todos.map(({ text, completed }, index) => {
-						if (text.includes(inputvalue)) {
-							return (
-								<TodoItem text={text} completed={completed} key={index} />
-							)
-						}
-					}
-					)
+					filteredTodos.map(({ text, completed }, index) => (
+						<TodoItem handleCompletedTodo={handleCompletedTodo} handleDeleteTodos={handleDeleteTodos} key={index} text={text} completed={completed} />
+					))
 				}
 			</TodoList>
 
