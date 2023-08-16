@@ -41,10 +41,10 @@ export const App = () => {
 
 	const total = todos.length;
 	const filteredTodos = todos.filter(({ text }) => {
-			const lowerCase = text.toLowerCase();
-			const inputLowerCase = inputvalue.toLowerCase()
-			return lowerCase.includes(inputLowerCase);
-		}
+		const lowerCase = text.toLowerCase();
+		const inputLowerCase = inputvalue.toLowerCase()
+		return lowerCase.includes(inputLowerCase);
+	}
 	);
 
 	const handleDeleteTodos = (text) => {
@@ -77,7 +77,11 @@ export const App = () => {
 			<TodoList>
 				{
 					filteredTodos.map(({ text, completed }, index) => (
-						<TodoItem handleCompletedTodo={handleCompletedTodo} handleDeleteTodos={handleDeleteTodos} key={index} text={text} completed={completed} />
+						<TodoItem
+							handleCompletedTodo={() => handleCompletedTodo(text)}
+							handleDeleteTodos={() => handleDeleteTodos(text)}
+							key={index} text={text} completed={completed}
+						/>
 					))
 				}
 			</TodoList>
