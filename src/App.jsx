@@ -5,35 +5,21 @@ import { TodoCounter } from './components/TodoCounter';
 import { TodoItem } from './components/TodoItem';
 import { TodoList } from './components/TodoList';
 import { TodoSearch } from './components/TodoSearch';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
-const defaultTodos = [
-	{
-		text: "Caminar",
-		completed: false
-	},
-	{
-		text: "Curso React",
-		completed: true
-	},
-	{
-		text: "Comer",
-		completed: false
-	},
-	{
-		text: "Dormir",
-		completed: true
-	},
-	{
-		text: "Funar",
-		completed: true
-	},
+// const defaultTodos = [
+//   { text: 'Cortar cebolla', completed: true },
+//   { text: 'Tomar el Curso de Intro a React.js', completed: false },
+//   { text: 'Llorar con la Llorona', completed: false },
+//   { text: 'LALALALALA', completed: false },
+//   { text: 'Usar estados derivados', completed: true },
+// ];
 
-];
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
 export const App = () => {
 	const [inputvalue, setInputValue] = useState("");
-
-	const [todos, setTodos] = useState(defaultTodos);
+	const [todos, saveTodos] = useLocalStorage({key: "TODOS_V1" , defaultStatue: []});
 
 	const completed = todos.filter((todo) =>
 		!!todo.completed
@@ -48,18 +34,20 @@ export const App = () => {
 	);
 
 	const handleDeleteTodos = (text) => {
-		const newTodos = todos.filter(todo => {
+		const newTodos = todos.filter((todo) => {
 			return todo.text !== text;
 		})
-		setTodos(newTodos);
+		saveTodos(newTodos);
 	}
 
 	const handleCompletedTodo = (text) => {
-		setTodos(todos.map(todo => {
-			if (todo.text === text)
+		const newTodos = todos.map(todo => {
+			if (todo.text === text) {
 				todo.completed = !todo.completed;
+			}
 			return todo;
-		}))
+		});
+		saveTodos(newTodos);
 	}
 
 	return (
