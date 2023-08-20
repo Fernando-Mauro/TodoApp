@@ -1,4 +1,4 @@
-import { TodoIcon } from "./TodoIcon"
+import { TodoIcon } from "./index.jsx"
 
 export const CompletedIcon = ({completed, handleCompletedTodo}) => {
   return (

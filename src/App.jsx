@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './App.css';
-import { CreateTodoButton } from './components/CreateTodoButton';
+import { CreateTodoButton } from './components/CreateTodoButton/';
 import { TodoCounter } from './components/TodoCounter';
 import { TodoItem } from './components/TodoItem';
 import { TodoList } from './components/TodoList';
