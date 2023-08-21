@@ -1,7 +1,7 @@
 import "./TodoCounter.css"
-export const TodoCounter = ({ done, total }) => {
+export const TodoCounter = ({ done, total, isLoading }) => {
   return (
-    done === total ?
+    done === total && !isLoading ?
       <h1 className="TodoCounter"> Has completado todas tus tareas 🥳</h1>
       :
       <h1 className="TodoCounter">

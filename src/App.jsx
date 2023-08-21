@@ -6,6 +6,9 @@ import { TodoItem } from './components/TodoItem';
 import { TodoList } from './components/TodoList';
 import { TodoSearch } from './components/TodoSearch';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { TodosLoading } from './components/TodosLoading';
+import { TodosError } from './components/TodosError';
+import { EmptyTodos } from './components/EmptyTodos';
 
 // const defaultTodos = [
 //   { text: 'Cortar cebolla', completed: true },
@@ -19,8 +22,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 export const App = () => {
 	const [inputvalue, setInputValue] = useState("");
-	const [todos, saveTodos] = useLocalStorage({key: "TODOS_V1" , defaultStatue: []});
-
+	const {items: todos, saveItems: saveTodos, isLoading, err} = useLocalStorage({ key: "TODOS_V1", defaultState: [] });
 	const completed = todos.filter((todo) =>
 		!!todo.completed
 	).length;
@@ -50,19 +52,12 @@ export const App = () => {
 		saveTodos(newTodos);
 	}
 
-	console.log('1');
-
-	useLayoutEffect(() => {
-		console.log('2');
-	}, []);
-
-	console.log('3');
-
 	return (
 		<>
 			<TodoCounter
 				done={completed}
 				total={total}
+				isLoading={isLoading}
 			/>
 
 			<TodoSearch
@@ -71,6 +66,16 @@ export const App = () => {
 			/>
 
 			<TodoList>
+				{
+					isLoading && <TodosLoading/>
+				}
+
+				{
+					err && <TodosError/>
+				}
+				{
+					(!isLoading && !err && filteredTodos.length === 0) && <EmptyTodos/>
+				}
 				{
 					filteredTodos.map(({ text, completed }, index) => (
 						<TodoItem
