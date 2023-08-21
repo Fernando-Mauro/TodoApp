@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import './App.css';
 import { CreateTodoButton } from './components/CreateTodoButton/';
 import { TodoCounter } from './components/TodoCounter';
@@ -49,6 +49,14 @@ export const App = () => {
 		});
 		saveTodos(newTodos);
 	}
+
+	console.log('1');
+
+	useLayoutEffect(() => {
+		console.log('2');
+	}, []);
+
+	console.log('3');
 
 	return (
 		<>
