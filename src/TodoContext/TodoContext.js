@@ -44,7 +44,8 @@ export const TodoProvider = ({children}) => {
             total,
             filteredTodos,
             handleCompletedTodo,
-            handleDeleteTodos        
+            handleDeleteTodos,
+            setInputValue     
         }}>
             {
                 children

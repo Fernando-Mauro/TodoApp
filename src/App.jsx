@@ -7,7 +7,8 @@ import { TodoSearch } from './components/TodoSearch';
 import { TodosLoading } from './components/TodosLoading';
 import { TodosError } from './components/TodosError';
 import { EmptyTodos } from './components/EmptyTodos';
-import { TodoContext, TodoProvider } from './TodoContext/TodoContext';
+import { TodoContext } from './TodoContext/TodoContext';
+import { useContext } from 'react';
 
 // const defaultTodos = [
 //   { text: 'Cortar cebolla', completed: true },
@@ -20,48 +21,34 @@ import { TodoContext, TodoProvider } from './TodoContext/TodoContext';
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
 export const App = () => {
-
+	const { isLoading, err, filteredTodos, handleCompletedTodo, handleDeleteTodos } = useContext(TodoContext);
 	return (
 		<>
 			<TodoCounter />
 			<TodoSearch />
-			<TodoProvider>
-				<TodoContext.Consumer>
-					{
-						({
-							isLoading,
-							err,
-							filteredTodos,
-							handleCompletedTodo,
-							handleDeleteTodos
-						}) => (
 
-							<TodoList>
-								{
-									isLoading && <TodosLoading />
-								}
 
-								{
-									err && <TodosError />
-								}
-								{
-									(!isLoading && !err && filteredTodos.length === 0) && <EmptyTodos />
-								}
-								{
-									filteredTodos.map(({ text, completed }, index) => (
-										<TodoItem
-											handleCompletedTodo={() => handleCompletedTodo(text)}
-											handleDeleteTodos={() => handleDeleteTodos(text)}
-											key={index} text={text} completed={completed}
-										/>
-									))
-								}
-							</TodoList>
-						)
-					}
-				</TodoContext.Consumer>
+			<TodoList>
+				{
+					isLoading && <TodosLoading />
+				}
 
-			</TodoProvider>
+				{
+					err && <TodosError />
+				}
+				{
+					(!isLoading && !err && filteredTodos.length === 0) && <EmptyTodos />
+				}
+				{
+					filteredTodos.map(({ text, completed }, index) => (
+						<TodoItem
+							handleCompletedTodo={() => handleCompletedTodo(text)}
+							handleDeleteTodos={() => handleDeleteTodos(text)}
+							key={index} text={text} completed={completed}
+						/>
+					))
+				}
+			</TodoList>
 			<CreateTodoButton />
 		</>
 	);

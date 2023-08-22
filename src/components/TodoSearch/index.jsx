@@ -1,16 +1,20 @@
+import { useContext } from "react";
 import "./TodoSearch.css"
+import { TodoContext } from "../../TodoContext/TodoContext";
 
-export const TodoSearch = ({inputvalue, setInputValue}) => {
+export const TodoSearch = () => {
 
-  return (
-    <input
-      placeholder="Cortar cabello 👨‍🦲"
-      className="TodoSearch"
-      value={inputvalue}
-      
-      onChange={({ target }) => {
-        setInputValue(target.value);
-      }}
-    />
-  )
+    const {inputvalue, setInputValue} = useContext(TodoContext);
+    
+    return (
+        <input
+            placeholder="Cortar cabello 👨‍🦲"
+            className="TodoSearch"
+            value={inputvalue}
+
+            onChange={({ target }) => {
+                setInputValue(target.value);
+            }}
+        />
+    )
 }
