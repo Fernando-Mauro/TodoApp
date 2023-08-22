@@ -1,14 +1,13 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
 import './App.css';
 import { CreateTodoButton } from './components/CreateTodoButton/';
 import { TodoCounter } from './components/TodoCounter';
 import { TodoItem } from './components/TodoItem';
 import { TodoList } from './components/TodoList';
 import { TodoSearch } from './components/TodoSearch';
-import { useLocalStorage } from './hooks/useLocalStorage';
 import { TodosLoading } from './components/TodosLoading';
 import { TodosError } from './components/TodosError';
 import { EmptyTodos } from './components/EmptyTodos';
+import { TodoContext, TodoProvider } from './TodoContext/TodoContext';
 
 // const defaultTodos = [
 //   { text: 'Cortar cebolla', completed: true },
@@ -21,72 +20,48 @@ import { EmptyTodos } from './components/EmptyTodos';
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
 export const App = () => {
-	const [inputvalue, setInputValue] = useState("");
-	const {items: todos, saveItems: saveTodos, isLoading, err} = useLocalStorage({ key: "TODOS_V1", defaultState: [] });
-	const completed = todos.filter((todo) =>
-		!!todo.completed
-	).length;
-
-	const total = todos.length;
-	const filteredTodos = todos.filter(({ text }) => {
-		const lowerCase = text.toLowerCase();
-		const inputLowerCase = inputvalue.toLowerCase()
-		return lowerCase.includes(inputLowerCase);
-	}
-	);
-
-	const handleDeleteTodos = (text) => {
-		const newTodos = todos.filter((todo) => {
-			return todo.text !== text;
-		})
-		saveTodos(newTodos);
-	}
-
-	const handleCompletedTodo = (text) => {
-		const newTodos = todos.map(todo => {
-			if (todo.text === text) {
-				todo.completed = !todo.completed;
-			}
-			return todo;
-		});
-		saveTodos(newTodos);
-	}
 
 	return (
 		<>
-			<TodoCounter
-				done={completed}
-				total={total}
-				isLoading={isLoading}
-			/>
+			<TodoCounter />
+			<TodoSearch />
+			<TodoProvider>
+				<TodoContext.Consumer>
+					{
+						({
+							isLoading,
+							err,
+							filteredTodos,
+							handleCompletedTodo,
+							handleDeleteTodos
+						}) => (
 
-			<TodoSearch
-				inputvalue={inputvalue}
-				setInputValue={setInputValue}
-			/>
+							<TodoList>
+								{
+									isLoading && <TodosLoading />
+								}
 
-			<TodoList>
-				{
-					isLoading && <TodosLoading/>
-				}
+								{
+									err && <TodosError />
+								}
+								{
+									(!isLoading && !err && filteredTodos.length === 0) && <EmptyTodos />
+								}
+								{
+									filteredTodos.map(({ text, completed }, index) => (
+										<TodoItem
+											handleCompletedTodo={() => handleCompletedTodo(text)}
+											handleDeleteTodos={() => handleDeleteTodos(text)}
+											key={index} text={text} completed={completed}
+										/>
+									))
+								}
+							</TodoList>
+						)
+					}
+				</TodoContext.Consumer>
 
-				{
-					err && <TodosError/>
-				}
-				{
-					(!isLoading && !err && filteredTodos.length === 0) && <EmptyTodos/>
-				}
-				{
-					filteredTodos.map(({ text, completed }, index) => (
-						<TodoItem
-							handleCompletedTodo={() => handleCompletedTodo(text)}
-							handleDeleteTodos={() => handleDeleteTodos(text)}
-							key={index} text={text} completed={completed}
-						/>
-					))
-				}
-			</TodoList>
-
+			</TodoProvider>
 			<CreateTodoButton />
 		</>
 	);
