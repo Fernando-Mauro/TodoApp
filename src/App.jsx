@@ -9,19 +9,11 @@ import { TodosError } from './components/TodosError';
 import { EmptyTodos } from './components/EmptyTodos';
 import { TodoContext } from './TodoContext/TodoContext';
 import { useContext } from 'react';
-
-// const defaultTodos = [
-//   { text: 'Cortar cebolla', completed: true },
-//   { text: 'Tomar el Curso de Intro a React.js', completed: false },
-//   { text: 'Llorar con la Llorona', completed: false },
-//   { text: 'LALALALALA', completed: false },
-//   { text: 'Usar estados derivados', completed: true },
-// ];
-
-// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
+import { Modal } from './components/Modal';
+import { TodoForm } from './components/TodoForm';
 
 export const App = () => {
-	const { isLoading, err, filteredTodos, handleCompletedTodo, handleDeleteTodos } = useContext(TodoContext);
+	const { isLoading, err, filteredTodos, handleCompletedTodo, handleDeleteTodos , openModal} = useContext(TodoContext);
 	return (
 		<>
 			<TodoCounter />
@@ -50,6 +42,14 @@ export const App = () => {
 				}
 			</TodoList>
 			<CreateTodoButton />
+			{
+				openModal && (
+					<Modal>
+						<TodoForm/>
+					</Modal>
+				)
+
+			}
 		</>
 	);
 }

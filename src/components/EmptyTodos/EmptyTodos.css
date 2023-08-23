@@ -1,0 +1,16 @@
+.empty-todos{
+    display: flex;
+    width: 100%;
+    justify-items: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.empty-todos img{
+    max-width:50%;
+}
+
+.empty-todos span{
+    font-size: 30px ;
+    font-weight: 200;
+}

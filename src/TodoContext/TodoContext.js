@@ -8,6 +8,7 @@ export const TodoProvider = ({children}) => {
     const [inputvalue, setInputValue] = useState("");
     const { items: todos, saveItems: saveTodos, isLoading, err } = useLocalStorage({ key: "TODOS_V1", defaultState: [] });
     
+    const [openModal, setOpenModal] = useState(false);
     const completed = todos.filter((todo) =>
         !!todo.completed
     ).length;
@@ -20,6 +21,10 @@ export const TodoProvider = ({children}) => {
     }
     );
 
+    const handleAddTodo = ({newTodo}) => {
+        const newTodos = [...todos, newTodo];
+        saveTodos(newTodos);
+    }
     const handleDeleteTodos = (text) => {
         const newTodos = todos.filter((todo) => {
             return todo.text !== text;
@@ -36,16 +41,22 @@ export const TodoProvider = ({children}) => {
         });
         saveTodos(newTodos);
     }
+    const handleOpenModal = () => {
+        setOpenModal(!openModal);
+    }
     return (
         <TodoContext.Provider value={{
-            isLoading, 
-            err, 
             completed,
-            total,
+            err, 
             filteredTodos,
+            handleAddTodo,
             handleCompletedTodo,
             handleDeleteTodos,
-            setInputValue     
+            handleOpenModal,
+            isLoading, 
+            openModal,
+            setInputValue,
+            total,
         }}>
             {
                 children
