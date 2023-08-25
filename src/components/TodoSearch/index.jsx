@@ -8,7 +8,7 @@ export const TodoSearch = () => {
     
     return (
         <input
-            placeholder="Cortar cabello 👨‍🦲"
+            placeholder="Seguir a ferma.dev 🐸"
             className="TodoSearch"
             value={inputvalue}
 

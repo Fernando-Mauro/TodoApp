@@ -1,21 +1,44 @@
+/* Estilos base del TodoItem */
 .TodoItem {
-    background-color: #fafafa;
     position: relative;
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+    justify-content: space-between;
     align-items: center;
+    flex-direction: column;
     margin-top: 24px;
-    box-shadow: 0 5px 50px rgba(32, 35, 41, .15)
+    box-shadow: 0 5px 50px rgba(32, 35, 41, 0.15);
+    background-color: #F2E9DF;
 }
 
 .TodoItem-p {
-    margin: 24px 0 24px 24px;
-    width: calc(100% - 120px);
+    flex: 1;
     font-size: 18px;
     line-height: 24px;
-    font-weight: 400
+    font-weight: 400;
+    color: #9B1D20;
+    margin-top: 10px;
+    margin-bottom: 0;
+    /* Añadido margen superior */
+    width: 100%;
+    /* Ancho completo */
 }
 
 .TodoItem-p--completed {
-    text-decoration: line-through
+    text-decoration: line-through;
+    color: #3D2B3D;
+}
+
+/* Estilos para pantallas más pequeñas (responsive) */
+@media (max-width: 768px) {
+    .TodoItem {
+        padding: 10px;
+        /* Reducir el padding en pantallas pequeñas */
+    }
+
+    .TodoItem-p {
+        margin-top: 0;
+        /* Eliminar el margen superior */
+    }
 }
