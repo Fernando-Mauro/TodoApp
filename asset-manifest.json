@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/home/fernando/Documentos/curso-react-intro/build/static/css/main.080b1595.css",
+    "main.js": "/home/fernando/Documentos/curso-react-intro/build/static/js/main.f91eaf34.js",
+    "static/media/bootstrap-icons.woff?": "/home/fernando/Documentos/curso-react-intro/build/static/media/bootstrap-icons.4753c5ba57962b4d7bf8.woff",
+    "static/media/bootstrap-icons.woff2?": "/home/fernando/Documentos/curso-react-intro/build/static/media/bootstrap-icons.6d63d0501e5ed7b79dab.woff2",
+    "index.html": "/home/fernando/Documentos/curso-react-intro/build/index.html",
+    "main.080b1595.css.map": "/home/fernando/Documentos/curso-react-intro/build/static/css/main.080b1595.css.map",
+    "main.f91eaf34.js.map": "/home/fernando/Documentos/curso-react-intro/build/static/js/main.f91eaf34.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.080b1595.css",
+    "static/js/main.f91eaf34.js"
+  ]
+}
