@@ -23,14 +23,6 @@ export const TodoItem = ({ text, completed, handleDeleteTodos, handleCompletedTo
                         <i className="bi bi-trash fs-2"></i>
                     </a>
                 </div>
-                <div className="text-end text-muted">
-                    <span href="#!" className="text-muted link-underline-opacity-0" role="button" data-mdb-toggle="tooltip" title="Created date">
-                        <p className="small mb-0">
-                            <i className="bi bi-info-circle me-2"></i>
-                            28th Jun 2020
-                        </p>
-                    </span>
-                </div>
             </li>
         </ul>
     )
