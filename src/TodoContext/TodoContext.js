@@ -4,10 +4,10 @@ import { useLocalStorage } from "../hooks/useLocalStorage";
 export const TodoContext = createContext();
 
 
-export const TodoProvider = ({children}) => {
+export const TodoProvider = ({ children }) => {
     const [inputvalue, setInputValue] = useState("");
     const { items: todos, saveItems: saveTodos, isLoading, err } = useLocalStorage({ key: "TODOS_V1", defaultState: [] });
-    
+
     const [openModal, setOpenModal] = useState(false);
     const completed = todos.filter((todo) =>
         !!todo.completed
@@ -21,7 +21,7 @@ export const TodoProvider = ({children}) => {
     }
     );
 
-    const handleAddTodo = ({newTodo}) => {
+    const handleAddTodo = ({ newTodo }) => {
         const newTodos = [...todos, newTodo];
         saveTodos(newTodos);
     }
@@ -47,13 +47,13 @@ export const TodoProvider = ({children}) => {
     return (
         <TodoContext.Provider value={{
             completed,
-            err, 
+            err,
             filteredTodos,
             handleAddTodo,
             handleCompletedTodo,
             handleDeleteTodos,
             handleOpenModal,
-            isLoading, 
+            isLoading,
             openModal,
             setInputValue,
             total,

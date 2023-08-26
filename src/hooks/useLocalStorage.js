@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react";
 
-const getItems = ({key, defaulState}) => {
-    return JSON.parse(localStorage.getItem(key)) || defaulState;
+const getItems = ({ key, defaultState }) => {
+    
+    return JSON.parse(localStorage.getItem(key)) || defaultState;
 }
 
-export const useLocalStorage = ({key, defaultState} ) => {
+export const useLocalStorage = ({ key, defaultState }) => {
     const [items, setItems] = useState(defaultState);
     const [isLoading, setIsloading] = useState(true);
     const [err, setErr] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
-            try{
+            try {
                 setItems(getItems({ key, defaultState }));
-                setIsloading(false);  
-            }catch(err){
+                setIsloading(false);
+            } catch (err) {
                 setErr(true);
             }
-        },3000);
+        }, 3000);
     }, []);
 
     const saveItems = (newItems) => {
@@ -28,7 +29,7 @@ export const useLocalStorage = ({key, defaultState} ) => {
     return {
         items,
         saveItems,
-        isLoading, 
+        isLoading,
         err
     }
 }
