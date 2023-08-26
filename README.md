@@ -1,75 +1,37 @@
-# Repositorio base del Curso de Introducción a React.js en Platzi
+# Todo App
 
-¡Hola, Platzinauta!
+Bienvenido a la Todo App, una aplicación simple para administrar tus tareas diarias. Puedes crear y gestionar tus tareas de manera eficiente utilizando esta aplicación.
 
-En este repositorio encontrarás el código de todas las clases del [Curso de Introducción a React.js](https://platzi.com/reactjs). Para empezar solo debes clonar este repositorio (`git clone`), instalar sus dependencias (`npm i`) y ejecutar la aplicación (`npm start`).
+## Descripción
 
-La rama principal contiene el código con el que eempezamos el curso. En las demás ramas encontrarás el código de las siguientes clases y finalmente el deploy de la aplicación.
+La Todo App es una aplicación desarrollada en React.js que te permite crear, editar y eliminar tareas. Utiliza Bootstrap para garantizar un diseño moderno y responsive.
 
-¡Mucha suerte aprendiendo React! #NuncaParesDeAprender
+## Sitio de Publicación
 
-## Getting Started with Create React App
+La aplicación está disponible en: [https://fernando-mauro.github.io/TodoApp/](https://fernando-mauro.github.io/TodoApp/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Uso
 
-## Available Scripts
+1. Accede al sitio de la aplicación: [Todo App](https://fernando-mauro.github.io/TodoApp/).
+2. Para crear una nueva tarea, haz clic en el botón **+** en la esquina superior derecha.
+3. Ingresa la descripción de la tarea y presiona Enter para agregarla.
+4. Puedes marcar una tarea como completada haciendo clic en la casilla de verificación junto a ella.
+5. Para eliminar una tarea, haz clic en el ícono de basura.
 
-In the project directory, you can run:
+## Tecnologías Utilizadas
 
-### `npm start`
+- React.js
+- Bootstrap
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Contacto
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Si tienes alguna pregunta o comentario sobre la aplicación, no dudes en contactarme:
 
-### `npm run build`
+- Twitter: [@ferma.dev](https://x.com/ferma.dev)
+- LinkedIn: [fernadev](https://www.linkedin.com/in/fermadev/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+¡Espero que disfrutes utilizando la Todo App para mantener tus tareas organizadas!
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Nota:** Esta es una aplicación de muestra y no se garantiza la persistencia de datos a largo plazo. Los datos pueden reiniciarse ocasionalmente.

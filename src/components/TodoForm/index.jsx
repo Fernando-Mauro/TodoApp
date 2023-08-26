@@ -25,7 +25,9 @@ export const TodoForm = () => {
     }
 
     return (
-        <div className="container w-50">
+        <div className="container-md" style={{
+            maxWidth: "500px"
+        }}>
             <div className="row">
                 <div className="col-sm">
                     <form onSubmit={onSubmitTodo} className="mb-4 p-5 bg-white rounded">
