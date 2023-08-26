@@ -3,7 +3,7 @@ import "./TodoList.css"
 
 export const TodoList = ({ children }) => {
   return (
-    <ul className="TodoList">
+    <ul>
         { children }
     </ul>
   )
